@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const io = require("socket.io")(server);
 require("./repositories/index");
 
+const uri = process.env.MONGODB_URI;
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(router);
