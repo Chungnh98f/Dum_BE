@@ -13,6 +13,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(router);
 
-server.listen(5050, () => {
-  console.log("Server is running in 5050");
+app.listen(process.env.PORT || 5050, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
 });
