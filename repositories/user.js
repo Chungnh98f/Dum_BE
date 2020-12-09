@@ -3,7 +3,6 @@ const db = require("./index");
 
 const findByEmail = async (email) => {
   const dbResult = await db.users.findOne({ email: email });
-  console.log(dbResult);
   if (!dbResult) return null;
 
   const user = new User(
@@ -35,8 +34,11 @@ const save = async (user) => {
       returnOriginal: false,
     }
   );
-
-  const savedUser = new User(dbResult.value, email);
+  const savedUser = new User(
+    dbResult.value.email,
+    dbResult.value.username,
+    dbResult.value.photoUrl
+  );
   return savedUser;
 };
 

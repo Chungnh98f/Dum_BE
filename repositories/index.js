@@ -9,7 +9,7 @@ const client = new mongo.MongoClient(
 client.connect().then((connectedClient) => {
   console.log("Connected to mongodb !!");
   const database = connectedClient.db("dumdb");
-  db.users = database.collection("Users");
+  db.users = database.collection("user");
 });
 
 module.exports = db;
