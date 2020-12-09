@@ -11,25 +11,25 @@ class User {
   jwt;
 
   constructor(email, username, photoUrl, salt, hash) {
-    this.username = username;
     this.email = email;
+    this.username = username;
     this.photoUrl = photoUrl;
     this.salt = salt;
     this.hash = hash;
   }
 
-  generatePassword(password) {
+  generatePassword(newPassword) {
     this.salt = crypto.randomBytes(128).toString("base64");
     this.hash = crypto
-      .pbkdf2Sync(password, this.salt, 10000, 512, "sh512")
+      .pbkdf2Sync(newPassword, this.salt, 10000, 512, "sha512")
       .toString("hex");
   }
 
   verifyPassword(password) {
     const hash = crypto
-      .pbkdf2Sync(password, this.salt, 10000, 512, "sh512")
+      .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
       .toString("hex");
-    return hash == this.hash;
+    return hash === this.hash;
   }
 
   generateJWT() {
