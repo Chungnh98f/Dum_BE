@@ -4,6 +4,10 @@ const authRouter = require("./auth");
 
 const router = express.Router();
 
-router.use("/auth", authRouter);
+router.use("/api/auth", authRouter);
+
+router.get("/", (req, res) => {
+  res.json("Hello world");
+});
 
 module.exports = router;

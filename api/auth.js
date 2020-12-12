@@ -25,4 +25,8 @@ router.post("/sign-up", async (req, res) => {
   }
 });
 
+router.get("/sign-out", (req, res) => {
+  res.status(200).send({ token: null, message: "Sign Out success" });
+});
+
 module.exports = router;
