@@ -71,8 +71,11 @@ io.on("connection", (socket) => {
       photoUrl: user.photoUrl,
     });
   });
-});
-
-server.listen(process.env.PORT || 5050, () => {
-  console.log("App is running at 5050");
+}
+server.listen(process.env.PORT || 5050, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
 });
