@@ -63,12 +63,12 @@ io.on("connection", (socket) => {
     });
     io.emit("user-disconnected", listUserOnline);
   });
-  socket.on("send-message-main-room", (user, message) => {
+  socket.on("send-message-main-room", data => {
     io.emit("create-message-main-room", {
       id: socket.id,
-      username: user.username,
-      content: message,
-      photoUrl: user.photoUrl,
+      username: data.username,
+      content: data.message,
+      photoUrl: data.photoUrl,
     });
   });
 });
